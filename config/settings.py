@@ -22,6 +22,7 @@ CHROMA_DB_PATH.mkdir(parents=True, exist_ok=True)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
+FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY")
 
 # LangChain / LangSmith settings
 LANGCHAIN_PROJECT = os.getenv("LANGCHAIN_PROJECT", "pdf-podcast")

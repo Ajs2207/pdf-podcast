@@ -4,6 +4,7 @@ from pathlib import Path
 from config.settings import UPLOAD_FOLDER
 from src.utils.pdf_loader import PDFLoader
 from src.utils.chunking import Chunker
+from src.vectorstore.chroma_client import ChromaClient
 
 
 st.set_page_config(
@@ -52,14 +53,18 @@ if st.button("Run Ingestion"):
         with st.spinner("Extracting text and chunking documents..."):
             total_pages = 0
             total_chunks = 0
+            vectordb = ChromaClient()
 
             for file_path in saved_files:
                 loader = PDFLoader(file_path)
                 pages = loader.load()
-                total_pages += len(pages)
 
                 chunker = Chunker()
                 chunks = chunker.chunk(pages)
+
+                vectordb.add_documents(chunks)
+
+                total_pages += len(pages)
                 total_chunks += len(chunks)
 
             st.success("Ingestion completed!")
