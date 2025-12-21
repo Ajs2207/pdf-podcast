@@ -5,6 +5,7 @@ from config.settings import UPLOAD_FOLDER
 from src.utils.pdf_loader import PDFLoader
 from src.utils.chunking import Chunker
 from src.vectorstore.chroma_client import ChromaClient
+from src.agents.rag_agent import RAGAgent
 
 
 st.set_page_config(
@@ -75,12 +76,15 @@ if st.button("Run Ingestion"):
 # -----------------------------
 # Question Section (Placeholder)
 # -----------------------------
-st.header("3️⃣ Ask a Question (Coming Soon)")
+st.header("3️⃣ Ask a Question")
 
-question = st.text_input(
-    "Ask a question about your documents",
-    disabled=True,
-    placeholder="RAG will be enabled after A2"
-)
+question = st.text_input("Ask a question about your documents")
 
-st.info("RAG-based Q&A will be enabled in the next phase (A2).")
+if question:
+    with st.spinner("Thinking..."):
+        agent = RAGAgent()
+        answer = agent.answer(question)
+
+    st.subheader("Answer")
+    st.write(answer)
+
