@@ -40,7 +40,21 @@ class RAGAgent:
         return self.vectordb.similarity_search(question, k=self.k)
 
     def _build_context(self, docs: List):
-        return "\n\n".join(doc.page_content for doc in docs)
+        context_blocks = []
+
+        for doc in docs:
+            metadata = doc.metadata
+            source = metadata.get("source", "unknown")
+            page = metadata.get("page_number", "N/A")
+
+            block = (
+                f"[Source: {source} | page {page}]\n"
+                f"{doc.page_content}"
+            )
+            context_blocks.append(block)
+
+        return "\n\n".join(context_blocks)
+
 
     def answer(self, question: str) -> str:
         docs = self.retrieve(question)
