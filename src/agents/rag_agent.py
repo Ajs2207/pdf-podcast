@@ -7,6 +7,7 @@ from langchain_core.prompts import ChatPromptTemplate
 
 from src.vectorstore.chroma_client import ChromaClient
 from config.settings import FIREWORKS_API_KEY
+from src.utils.memory import RedisChatMemory
 
 
 class RAGAgent:
@@ -22,6 +23,7 @@ class RAGAgent:
         )
 
         self.prompt = self._load_prompt()
+        self.memory = RedisChatMemory()
 
     def _load_prompt(self) -> ChatPromptTemplate:
         prompt_path = Path("config/prompts.yaml")
@@ -54,16 +56,35 @@ class RAGAgent:
             context_blocks.append(block)
 
         return "\n\n".join(context_blocks)
+    
+    def _format_history(self, history):
+        if not history:
+            return "None"
+
+        return "\n".join(
+                f"{m['role'].capitalize()}: {m['content']}"
+                for m in history
+            )
 
 
-    def answer(self, question: str) -> str:
+    def answer(self, question: str, session_id: str):
+
+        history = self.memory.get_history(session_id)
+        formatted_history = self._format_history(history)
+
         docs = self.retrieve(question)
         context = self._build_context(docs)
 
         messages = self.prompt.format_messages(
+            history=formatted_history,
             context=context,
             question=question
         )
 
+
         response = self.llm.invoke(messages)
+
+        self.memory.append(session_id, "user", question)
+        self.memory.append(session_id, "assistant", response.content)
+        
         return response.content

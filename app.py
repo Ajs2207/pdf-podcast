@@ -1,11 +1,17 @@
 import streamlit as st
 from pathlib import Path
+import uuid
+import streamlit as st
 
 from config.settings import UPLOAD_FOLDER
 from src.utils.pdf_loader import PDFLoader
 from src.utils.chunking import Chunker
 from src.vectorstore.chroma_client import ChromaClient
 from src.agents.rag_agent import RAGAgent
+
+if "session_id" not in st.session_state:
+    st.session_state.session_id = str(uuid.uuid4())
+
 
 
 st.set_page_config(
@@ -83,7 +89,7 @@ question = st.text_input("Ask a question about your documents")
 if question:
     with st.spinner("Thinking..."):
         agent = RAGAgent()
-        answer = agent.answer(question)
+        answer = agent.answer(question,st.session_state.session_id)
 
     st.subheader("Answer")
     st.write(answer)

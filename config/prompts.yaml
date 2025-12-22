@@ -26,6 +26,9 @@ rag_qa:
 
 
   human: |
+    Conversation so far:
+    {history}
+    
     Context:
     {context}
 
