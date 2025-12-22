@@ -1,0 +1,54 @@
+{
+  "timestamp": "2025-12-22T19:54:03.155648+00:00",
+  "num_samples": 8,
+  "results": [
+    {
+      "question": "What are transformer models?",
+      "answerable": true,
+      "generated_answer": "Answer:\nTransformer models are a type of neural network architecture that replaces the recurrence used in RNNs with a pure attention mechanism.  They were inspired by the encoder\u2011decoder architecture of RNNs but, unlike RNNs, process all input elements simultaneously through attention rather than sequentially one at a time.\n\nSources:\n- sample.pdf (page 3)",
+      "hallucinated": false
+    },
+    {
+      "question": "Why did transformer models replace RNNs for many NLP tasks?",
+      "answerable": true,
+      "generated_answer": "Answer:\nTransformer models replaced RNNs for many NLP tasks because they use an attention\u2011based architecture that allows parallel processing on GPUs, leading to faster training, and they handle long\u2011range dependencies more effectively than RNNs, which process data sequentially and struggle with distant elements. This combination of speed and improved performance made transformers the preferred choice for tasks such as text summarization, image captioning, and speech recognition.\n\nSources:\n- sample.pdf (page 3)",
+      "hallucinated": false
+    },
+    {
+      "question": "What is self-attention and why is it important in transformers?",
+      "answerable": true,
+      "generated_answer": "I don't know based on the provided documents.",
+      "hallucinated": false
+    },
+    {
+      "question": "What is this document about in simple terms?",
+      "answerable": true,
+      "generated_answer": "Answer:\nThe document explains how modern neural\u2011network models for natural\u2011language processing have moved from older recurrent\u2011network (RNN) approaches to the newer Transformer architecture, highlighting that Transformers rely on attention mechanisms instead of sequential processing.\n\nSources:\n- sample.pdf (page 3)",
+      "hallucinated": false
+    },
+    {
+      "question": "Explain transformer models to a beginner.",
+      "answerable": true,
+      "generated_answer": "Answer:\nA transformer is a type of neural network that has become the foundation for many modern AI systems, especially those that work with language.  \n- **Core idea**: Instead of looking at words one by one, a transformer looks at all words in a sentence at the same time. It uses a mechanism called *self\u2011attention* to decide which words are most important to each other.  \n- **Structure**: It is built with an *encoder\u2013decoder* design. The encoder reads the input (e.g., a sentence) and creates a rich representation of it. The decoder then uses that representation to produce an output (e.g., a translation or a continuation of the text).  \n- **Multi\u2011head attention**: The transformer splits the attention process into several \u201cheads,\u201d each focusing on different aspects of the input. This lets the model capture many relationships at once.  \n- **Why it matters**: Because of these attention mechanisms and the ability to process many words in parallel, transformers can understand and generate language with high accuracy and speed. They have reshaped natural language processing and are now used in many AI applications beyond text, such as image and speech processing.\n\nSources:\n- sample.pdf (page 1)",
+      "hallucinated": false
+    },
+    {
+      "question": "What is the capital of France?",
+      "answerable": false,
+      "generated_answer": "I don't know based on the provided documents.",
+      "hallucinated": false
+    },
+    {
+      "question": "Who won the FIFA World Cup in 2014?",
+      "answerable": false,
+      "generated_answer": "I don't know based on the provided documents.",
+      "hallucinated": false
+    },
+    {
+      "question": "Explain it in simpler terms.",
+      "answerable": false,
+      "generated_answer": "I don't know based on the provided documents.",
+      "hallucinated": false
+    }
+  ]
+}

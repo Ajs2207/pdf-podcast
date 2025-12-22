@@ -1,0 +1,42 @@
+[
+  {
+    "question": "What are transformer models?",
+    "expected_answer": "Transformer models are neural networks that understand and generate sequential data using attention mechanisms instead of recurrence.",
+    "answerable": true
+  },
+  {
+    "question": "Why did transformer models replace RNNs for many NLP tasks?",
+    "expected_answer": "Transformers replaced RNNs because they support parallel computation and handle long-range dependencies more effectively using attention.",
+    "answerable": true
+  },
+  {
+    "question": "What is self-attention and why is it important in transformers?",
+    "expected_answer": "Self-attention allows a transformer to focus on different parts of the input sequence regardless of distance, enabling better context understanding.",
+    "answerable": true
+  },
+  {
+    "question": "What is this document about in simple terms?",
+    "expected_answer": "The document explains how transformer models work, why they are important, and how they power modern AI systems like GPT and BERT.",
+    "answerable": true
+  },
+  {
+    "question": "Explain transformer models to a beginner.",
+    "expected_answer": "Transformer models are AI systems that learn patterns in text to understand and generate human-like language using attention.",
+    "answerable": true
+  },
+  {
+    "question": "What is the capital of France?",
+    "expected_answer": "",
+    "answerable": false
+  },
+  {
+    "question": "Who won the FIFA World Cup in 2014?",
+    "expected_answer": "",
+    "answerable": false
+  },
+  {
+    "question": "Explain it in simpler terms.",
+    "expected_answer": "",
+    "answerable": false
+  }
+]

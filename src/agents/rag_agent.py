@@ -11,7 +11,14 @@ from src.utils.memory import RedisChatMemory
 
 
 class RAGAgent:
-    def __init__(self, k: int = 4):
+    def __init__(self, k: int = 4,use_memory: bool = True):
+        self.use_memory = use_memory
+
+        if use_memory:
+            self.memory = RedisChatMemory()
+        else:
+            self.memory = None
+        
         self.k = k
         self.vectordb = ChromaClient()
 
@@ -23,7 +30,6 @@ class RAGAgent:
         )
 
         self.prompt = self._load_prompt()
-        self.memory = RedisChatMemory()
 
     def _load_prompt(self) -> ChatPromptTemplate:
         prompt_path = Path("config/prompts.yaml")
@@ -69,8 +75,12 @@ class RAGAgent:
 
     def answer(self, question: str, session_id: str):
 
-        history = self.memory.get_history(session_id)
-        formatted_history = self._format_history(history)
+        if self.use_memory and self.memory:
+            history = self.memory.get_history(session_id)
+            formatted_history = self._format_history(history)
+        else:
+            formatted_history = ""
+
 
         docs = self.retrieve(question)
         context = self._build_context(docs)
@@ -83,8 +93,10 @@ class RAGAgent:
 
 
         response = self.llm.invoke(messages)
+        
+        if self.use_memory and self.memory:
+            self.memory.append(session_id, "user", question)
+            self.memory.append(session_id, "assistant", response.content)
 
-        self.memory.append(session_id, "user", question)
-        self.memory.append(session_id, "assistant", response.content)
         
         return response.content

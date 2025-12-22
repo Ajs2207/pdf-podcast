@@ -30,3 +30,9 @@ pytest>=9.0.0
 
 # For running Jupyter Notebooks
 ipykernel==7.1.0
+
+# Evaluation framework for RAG and LLM applications
+ragas==0.4.1
+
+# HuggingFace community-driven open-source library of datasets
+datasets==4.4.2
