@@ -1,53 +1,85 @@
 {
-  "timestamp": "2025-12-22T19:54:03.155648+00:00",
+  "timestamp": "2025-12-22T20:31:00.969043+00:00",
   "num_samples": 8,
   "results": [
     {
       "question": "What are transformer models?",
       "answerable": true,
-      "generated_answer": "Answer:\nTransformer models are a type of neural network architecture that replaces the recurrence used in RNNs with a pure attention mechanism.  They were inspired by the encoder\u2011decoder architecture of RNNs but, unlike RNNs, process all input elements simultaneously through attention rather than sequentially one at a time.\n\nSources:\n- sample.pdf (page 3)",
+      "generated_answer": "Answer:\nTransformer models are a type of neural network architecture for natural language processing that were introduced as an alternative to recurrent neural networks (RNNs) such as LSTMs. They are inspired by the encoder\u2011decoder architecture used in RNNs but replace recurrence with a fully attention\u2011based mechanism, allowing the model to process input sequences in parallel rather than sequentially.\n\nSources:\n- sample.pdf (page 3)",
+      "contexts": [
+        "\u201cWe are in a time where simple methods like neural networks are giving us an explosion of new \ncapabilities,\u201d Ashish Vaswani, an entrepreneur and former senior staff research scientist at Google \nThe shift from RNN models like LSTM to Transformers for NLP problems \nAt the time of the Transformer model introduction, RNNs were the preferred approach for dealing \nwith sequential data, which is characterized by a specific order in its input. \nRNNs function similarly to a feed-forward neural network but process the input sequentially, one \nelement at a time. \nTransformers were inspired by the encoder-decoder architecture found in RNNs. However, Instead \nof using recurrence, the Transformer model is completely based on the Attention mechanism."
+      ],
+      "expected_answer": "Transformer models are neural networks that understand and generate sequential data using attention mechanisms instead of recurrence.",
       "hallucinated": false
     },
     {
       "question": "Why did transformer models replace RNNs for many NLP tasks?",
       "answerable": true,
       "generated_answer": "Answer:\nTransformer models replaced RNNs for many NLP tasks because they use an attention\u2011based architecture that allows parallel processing on GPUs, leading to faster training, and they handle long\u2011range dependencies more effectively than RNNs, which process data sequentially and struggle with distant elements. This combination of speed and improved performance made transformers the preferred choice for tasks such as text summarization, image captioning, and speech recognition.\n\nSources:\n- sample.pdf (page 3)",
+      "contexts": [
+        "of using recurrence, the Transformer model is completely based on the Attention mechanism. \nBesides improving RNN performance, Transformers have provided a new architecture to solve many \nother tasks, such as text summarization, image captioning, and speech recognition. \nSo, what are RNNs' main problems? They are quite ineffective for NLP tasks for two main reasons: \n\u2022 They process the input data sequentially, one after the other. Such a recurrent process does \nnot make use of modern graphics processing units (GPUs), which were designed for parallel \ncomputation and, thus, makes the training of such models quite slow. \n\u2022 They become quite ineffective when elements are distant from one another. This is due to"
+      ],
+      "expected_answer": "Transformers replaced RNNs because they support parallel computation and handle long-range dependencies more effectively using attention.",
       "hallucinated": false
     },
     {
       "question": "What is self-attention and why is it important in transformers?",
       "answerable": true,
       "generated_answer": "I don't know based on the provided documents.",
+      "contexts": [
+        "of using recurrence, the Transformer model is completely based on the Attention mechanism. \nBesides improving RNN performance, Transformers have provided a new architecture to solve many \nother tasks, such as text summarization, image captioning, and speech recognition. \nSo, what are RNNs' main problems? They are quite ineffective for NLP tasks for two main reasons: \n\u2022 They process the input data sequentially, one after the other. Such a recurrent process does \nnot make use of modern graphics processing units (GPUs), which were designed for parallel \ncomputation and, thus, makes the training of such models quite slow. \n\u2022 They become quite ineffective when elements are distant from one another. This is due to"
+      ],
+      "expected_answer": "Self-attention allows a transformer to focus on different parts of the input sequence regardless of distance, enabling better context understanding.",
       "hallucinated": false
     },
     {
       "question": "What is this document about in simple terms?",
       "answerable": true,
-      "generated_answer": "Answer:\nThe document explains how modern neural\u2011network models for natural\u2011language processing have moved from older recurrent\u2011network (RNN) approaches to the newer Transformer architecture, highlighting that Transformers rely on attention mechanisms instead of sequential processing.\n\nSources:\n- sample.pdf (page 3)",
+      "generated_answer": "Answer:\nThe document explains how the field of natural\u2011language processing moved from using recurrent neural networks (like LSTMs) to using Transformer models, highlighting that Transformers rely on an attention mechanism instead of recurrence.\n\nSources:\n- sample.pdf (page 3)",
+      "contexts": [
+        "\u201cWe are in a time where simple methods like neural networks are giving us an explosion of new \ncapabilities,\u201d Ashish Vaswani, an entrepreneur and former senior staff research scientist at Google \nThe shift from RNN models like LSTM to Transformers for NLP problems \nAt the time of the Transformer model introduction, RNNs were the preferred approach for dealing \nwith sequential data, which is characterized by a specific order in its input. \nRNNs function similarly to a feed-forward neural network but process the input sequentially, one \nelement at a time. \nTransformers were inspired by the encoder-decoder architecture found in RNNs. However, Instead \nof using recurrence, the Transformer model is completely based on the Attention mechanism."
+      ],
+      "expected_answer": "The document explains how transformer models work, why they are important, and how they power modern AI systems like GPT and BERT.",
       "hallucinated": false
     },
     {
       "question": "Explain transformer models to a beginner.",
       "answerable": true,
-      "generated_answer": "Answer:\nA transformer is a type of neural network that has become the foundation for many modern AI systems, especially those that work with language.  \n- **Core idea**: Instead of looking at words one by one, a transformer looks at all words in a sentence at the same time. It uses a mechanism called *self\u2011attention* to decide which words are most important to each other.  \n- **Structure**: It is built with an *encoder\u2013decoder* design. The encoder reads the input (e.g., a sentence) and creates a rich representation of it. The decoder then uses that representation to produce an output (e.g., a translation or a continuation of the text).  \n- **Multi\u2011head attention**: The transformer splits the attention process into several \u201cheads,\u201d each focusing on different aspects of the input. This lets the model capture many relationships at once.  \n- **Why it matters**: Because of these attention mechanisms and the ability to process many words in parallel, transformers can understand and generate language with high accuracy and speed. They have reshaped natural language processing and are now used in many AI applications beyond text, such as image and speech processing.\n\nSources:\n- sample.pdf (page 1)",
+      "generated_answer": "Answer:\nA transformer is a type of neural network that has become the foundation for many modern AI systems, especially those that work with language.  \n- **Core idea**: Instead of looking at words one by one, a transformer looks at all words in a sentence at the same time. It uses a mechanism called *self\u2011attention* to decide which words are most important to each other.  \n- **Structure**: It is built with an *encoder\u2013decoder* design. The encoder reads the input (e.g., a sentence) and creates a rich representation of it. The decoder then uses that representation to produce an output (e.g., a translation or a continuation of the text).  \n- **Multi\u2011head attention**: The transformer splits the attention process into several \u201cheads\u201d that can focus on different aspects of the input simultaneously, giving the model a more nuanced understanding.  \n- **Impact**: Because of these attention mechanisms and the ability to process many words in parallel, transformers have dramatically improved the accuracy and speed of language models like OpenAI\u2019s GPT series. They have also opened up new possibilities across many areas of artificial intelligence.\n\nSources:\n- sample.pdf (page 1)",
+      "contexts": [
+        "Understand Transformer architecture, including self-attention, encoder\u2013decoder design, and \nmulti-head attention, and how it powers models like OpenAI's GPT models. \nThe deep learning field has been experiencing a seismic shift, thanks to the emergence and rapid \nevolution of Transformer models. \nThese groundbreaking architectures have not just redefined the standards in Natural Language \nProcessing (NLP) but have broadened their horizons to revolutionize numerous facets of artificial \nintelligence. \nCharacterized by their unique attention mechanisms and parallel processing abilities, Transformer \nmodels stand as a testament to the innovative leaps in understanding and generating human \nlanguage with an accuracy and efficiency previously unattainable."
+      ],
+      "expected_answer": "Transformer models are AI systems that learn patterns in text to understand and generate human-like language using attention.",
       "hallucinated": false
     },
     {
       "question": "What is the capital of France?",
       "answerable": false,
       "generated_answer": "I don't know based on the provided documents.",
+      "contexts": [
+        "Understand Transformer architecture, including self-attention, encoder\u2013decoder design, and \nmulti-head attention, and how it powers models like OpenAI's GPT models. \nThe deep learning field has been experiencing a seismic shift, thanks to the emergence and rapid \nevolution of Transformer models. \nThese groundbreaking architectures have not just redefined the standards in Natural Language \nProcessing (NLP) but have broadened their horizons to revolutionize numerous facets of artificial \nintelligence. \nCharacterized by their unique attention mechanisms and parallel processing abilities, Transformer \nmodels stand as a testament to the innovative leaps in understanding and generating human \nlanguage with an accuracy and efficiency previously unattainable."
+      ],
+      "expected_answer": "",
       "hallucinated": false
     },
     {
       "question": "Who won the FIFA World Cup in 2014?",
       "answerable": false,
       "generated_answer": "I don't know based on the provided documents.",
+      "contexts": [
+        "of using recurrence, the Transformer model is completely based on the Attention mechanism. \nBesides improving RNN performance, Transformers have provided a new architecture to solve many \nother tasks, such as text summarization, image captioning, and speech recognition. \nSo, what are RNNs' main problems? They are quite ineffective for NLP tasks for two main reasons: \n\u2022 They process the input data sequentially, one after the other. Such a recurrent process does \nnot make use of modern graphics processing units (GPUs), which were designed for parallel \ncomputation and, thus, makes the training of such models quite slow. \n\u2022 They become quite ineffective when elements are distant from one another. This is due to"
+      ],
+      "expected_answer": "",
       "hallucinated": false
     },
     {
       "question": "Explain it in simpler terms.",
       "answerable": false,
       "generated_answer": "I don't know based on the provided documents.",
+      "contexts": [
+        "\u201cWe are in a time where simple methods like neural networks are giving us an explosion of new \ncapabilities,\u201d Ashish Vaswani, an entrepreneur and former senior staff research scientist at Google \nThe shift from RNN models like LSTM to Transformers for NLP problems \nAt the time of the Transformer model introduction, RNNs were the preferred approach for dealing \nwith sequential data, which is characterized by a specific order in its input. \nRNNs function similarly to a feed-forward neural network but process the input sequentially, one \nelement at a time. \nTransformers were inspired by the encoder-decoder architecture found in RNNs. However, Instead \nof using recurrence, the Transformer model is completely based on the Attention mechanism."
+      ],
+      "expected_answer": "",
       "hallucinated": false
     }
   ]

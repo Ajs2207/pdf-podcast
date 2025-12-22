@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+import time
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 sys.path.append(str(ROOT_DIR))
@@ -28,10 +29,21 @@ def run_evaluation():
         answerable = sample["answerable"]
 
         try:
+            # answer = agent.answer(
+            #     question=question,
+            #     session_id="eval_session"  # fixed session, memory not used
+            # )
+            docs = agent.retrieve(question)
+            #contexts = [doc.page_content for doc in docs]
+            contexts = list(dict.fromkeys(doc.page_content for doc in docs)) # handles the duplicates in chunks
+
+            time.sleep(5.0)  # 5 second delay to avoid rate limits
+
             answer = agent.answer(
                 question=question,
-                session_id="eval_session"  # fixed session, memory not used
+                session_id="eval_session" # fixed session, memory not used.
             )
+        
         except Exception as e:
             answer = f"ERROR: {str(e)}"
 
@@ -42,12 +54,21 @@ def run_evaluation():
                 or "not mentioned" in answer.lower()
             )
 
+        # results.append({
+        #     "question": question,
+        #     "answerable": answerable,
+        #     "generated_answer": answer,
+        #     "hallucinated": hallucinated
+        # })
         results.append({
             "question": question,
             "answerable": answerable,
             "generated_answer": answer,
+            "contexts": contexts,
+            "expected_answer": sample["expected_answer"],
             "hallucinated": hallucinated
         })
+
 
     report = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
