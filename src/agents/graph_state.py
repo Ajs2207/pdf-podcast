@@ -1,4 +1,4 @@
-from typing import TypedDict, List
+from typing import TypedDict, List, Optional
 
 ## This is the shared memory of the graph.
 class GraphState(TypedDict):
@@ -6,3 +6,4 @@ class GraphState(TypedDict):
     answer: str
     documents: List[str]
     route: str
+    intent: Optional[str]
