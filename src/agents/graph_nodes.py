@@ -11,17 +11,29 @@ def retrieve_node(state):
     }
 
 def rag_agent_node(state):
-    if not state["documents"]:
+    try:
+        #raise RuntimeError("TEST_RAG_FAILURE")  # 👈 TEMPORARY LINE
+        if not state["documents"]:
+            return {
+                "answer": "I don't know based on the provided documents."
+            }
+
+        answer = rag_agent.answer(
+            question=state["question"],
+            session_id="graph"
+        )
+
         return {
-            "answer": "I don't know based on the provided documents."
+            "answer": answer,
+            "error": None
         }
 
-    answer = rag_agent.answer(
-        question=state["question"],
-        session_id="graph"
-    )
+    except Exception as e:
+        return {
+            "answer": None,
+            "error": f"RAG_ERROR: {str(e)}"
+        }
 
-    return {"answer": answer}
 
 
 def fallback_node(state):
@@ -61,3 +73,7 @@ def image_agent_node(state):
     }
 
 
+def error_handler_node(state):
+    return {
+        "answer": "Something went wrong while processing your request. Please try again."
+    }

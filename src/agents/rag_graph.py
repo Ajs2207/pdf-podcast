@@ -8,6 +8,7 @@ from src.agents.graph_nodes import (
     podcast_agent_node,
     image_agent_node,
     fallback_node,
+    error_handler_node
 )
 
 
@@ -22,6 +23,8 @@ def build_graph():
     graph.add_node("podcast", podcast_agent_node)
     graph.add_node("image", image_agent_node)
     graph.add_node("fallback", fallback_node)
+    graph.add_node("error_handler", error_handler_node)
+
 
     graph.set_entry_point("retrieve")
 
@@ -46,7 +49,18 @@ def build_graph():
         },
     )
 
-    graph.add_edge("rag", END)
+    # graph.add_edge("rag", END)
+    graph.add_conditional_edges(
+    "rag",
+    lambda state: "error" if state.get("error") else "ok",
+    {
+        "ok": END,
+        "error": "error_handler",
+    },
+)
+
+    graph.add_edge("error_handler", END)
+
     graph.add_edge("podcast", END)
     graph.add_edge("image", END)
     graph.add_edge("fallback", END)

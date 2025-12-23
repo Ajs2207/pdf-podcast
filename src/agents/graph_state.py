@@ -7,3 +7,4 @@ class GraphState(TypedDict):
     documents: List[str]
     route: str
     intent: Optional[str]
+    error: Optional[str]
